@@ -133,14 +133,13 @@ pip-wheel-metadata/
 
 # Exclude all data directories
 data/
-# results/
 
 # Exclude specific data directories at any level
 **/data/
 **/datasets/
 **/input/
 **/outputs/
-**/results/
+# **/results/
 
 # Exclude specific file types (optional)
 # *.csv
