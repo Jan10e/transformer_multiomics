@@ -158,5 +158,4 @@ playground/
 # Exclude model files
 models/
 *.pt
-*.pth
 *.pkl

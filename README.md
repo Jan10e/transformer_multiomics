@@ -24,6 +24,18 @@ This repository contains a project for predictive modelling of proteomics data u
 The time reserved for this project was 2 weeks, although I had mainly time during the weekends and 2 evenings during the week.
 
 
+### Repository Structure
+
+```
+.
+├── data/                               # Directory for input data files
+├── models/                             # Directory for model files (.pth)
+├── results/                            # Directory for prediction results
+├── EMBL_transformer_explore.ipynb      # Data, model building, tuning, etc
+├── EMBL_transformer_best_model.ipynb   # Best model, feature analysis
+└── README.md                           
+```
+
 
 <a name="model-and-data"></a>
 ## Model and Data
@@ -43,34 +55,96 @@ The aim is to use multiple input omics datasets to predict proteomics data. Inpu
 
 ### How to Build
 
-1. Ensure you have Python 3.6 or higher installed.
-2. Clone the repository:
+This repository uses Git Large File Storage (Git LFS) to handle the large `.pth` model files. To clone and use this repository:
 
-```bash
-git clone https://github.com/Jan10e/transformer_proteomics.git
-cd transformer_proteomics
-```
+1. Install Git LFS if you haven't already:
+   ```bash
+   # For Ubuntu/Debian
+   apt-get install git-lfs
 
-2. Create a (conda) environment. For example:
+   # For macOS with Homebrew
+   brew install git-lfs
 
-```bash
-conda create -n transformer_proteomics python=3.11
-conda activate transformer_proteomics
-```
+   # For Windows with Chocolatey
+   choco install git-lfs
+   ```
 
-3. Install dependencies:
+2. Enable Git LFS:
+   ```bash
+   git lfs install
+   ```
 
-```bash
-pip install -r requirements.txt
-```
+3. Ensure you have Python 3.8 or higher installed.
+4. Clone the repository:
+   ```bash
+    git clone https://github.com/Jan10e/transformer_proteomics.git
+    cd transformer_proteomics
+   ```
+
+5. Pull the LFS files:
+   ```bash
+   git lfs pull
+   ```
+
+6. Create a (conda) environment. For example:
+
+    ```bash
+    conda create -n transformer_proteomics python=3.11
+    conda activate transformer_proteomics
+    ```
+
+7. Install dependencies:
+
+    ```bash
+    pip install -r requirements.txt
+    ```
 
 ### How to Run
 
-1. Run the Notebook
-```bash
-EMBL_transformer.ipynb
-```
+#### Required Data Files
 
----
+The model expects the following data files in the `data/` directory:
+
+- `20231023_092657_imputed_methylation.csv`
+- `20231023_092657_imputed_metabolomics.csv`
+- `20231023_092657_imputed_proteomics.csv`
+- `20231023_092657_imputed_transcriptomics.csv`
+- `20231023_092657_imputed_copynumber.csv`
+
+#### Build Transformer Model
+
+-  Run the **EMBL_transformer_explore.ipynb** to see the development of the Transformer model 
+    ```bash
+    EMBL_transformer_explore.ipynb
+    ```
+
+This script will:
+1. Load the omics data
+2. Inspect the data
+3. Create base MLP model
+4. Develop Transformer model
+5. Hyperparameter tuning
+6. Progressive input omics selection
 
 
+#### Running the Best-Performing Model
+
+-  Run the **EMBL_transformer_best_model.ipynb** to see the development of the Transformer model 
+    ```bash
+    EMBL_transformer_best_model.ipynb
+    ```
+The script will:
+1. Load the omics data
+2. Load the pre-trained model
+3. Make predictions for proteomics values
+4. Save the predictions to `results/predicted_proteomics.csv`
+5. Perform feature analysis
+
+
+
+## Model Details
+
+The model is a transformer-based architecture that:
+- Uses a "gated" fusion method to combine different omics modalities
+- Was trained primarily on transcriptomics data to predict proteomics features
+- Implements self-attention mechanisms to capture complex relationships between features
