@@ -156,6 +156,6 @@ data/
 playground/
 
 # Exclude model files
-models/
+# models/
 *.pt
 *.pkl
