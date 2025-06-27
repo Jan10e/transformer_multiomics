@@ -6,7 +6,7 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 # Define common paths
 MODEL_PATH = REPO_ROOT / "models"
 RESULT_PATH = REPO_ROOT / "results"
-DATA_PATH = REPO_ROOT / "data"
+DATA_PATH = REPO_ROOT / "datasets"
 
 # Prefix for dataset files
 DATA_PREFIX = "20231023_092657_"
