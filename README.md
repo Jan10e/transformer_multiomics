@@ -77,8 +77,8 @@ This repository uses Git Large File Storage (Git LFS) to handle the large `.pth`
 3. Ensure you have Python 3.8 or higher installed.
 4. Clone the repository:
    ```bash
-    git clone https://github.com/Jan10e/transformer_proteomics.git
-    cd transformer_proteomics
+    git clone https://github.com/Jan10e/transformer_multiomics.git
+    cd transformer_multiomics
    ```
 
 5. Pull the LFS files:
@@ -89,8 +89,8 @@ This repository uses Git Large File Storage (Git LFS) to handle the large `.pth`
 6. Create a (conda) environment. For example:
 
     ```bash
-    conda create -n transformer_proteomics python=3.11
-    conda activate transformer_proteomics
+    conda create -n transformer_multiomics python=3.11
+    conda activate transformer_multiomics
     ```
 
 7. Install dependencies:
